@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!-- <record id="add_student_classroom_view_form" model="ir.ui.view">
+		<field name="name">tp.master.add_student.wizard</field>
+		<field name="model">tp.master.add_student</field>
+		<field name="arch" type="xml">
+			<form string="Add student to classroom">
+				<group>
+					<field name="student_id" />
+					<field name="classroom_id" />
+				</group>
+				<footer>
+					<button name="add_student_classroom" string="Inscrire" type="object" class="btn-primary" />
+					<button string="Annuler" type="object" class="btn-danger" special="cancel" />
+				</footer>
+			</form>
+		</field>
+	</record> -->
+
+	<!-- tp.master.add_student form view -->
+	<record id="add_student_classroom_view_form" model="ir.ui.view">
+		<field name="name">tp.master.add_student.view.form</field>
+		<field name="model">tp.master.add_student</field>
+		<field name="arch" type="xml">
+			<form string="Add student to classroom">
+				<group>
+					<field name="student_id" />
+					<field name="classroom_id" />
+				</group>
+				<footer>
+					<!-- <button string="Inscrire" type="object" class="btn-primary" /> -->
+					<button string="Inserer" class="btn-primary" name="action_add_student_classroom" type="object" />
+					<button string="Annuler" special="cancel" class="btn-danger" />
+				</footer>
+			</form>
+		</field>
+	</record>
+	<record id="add_student_classroom_wizard" model="ir.actions.act_window">
+		<field name="context">{'default_student_id':active_id}</field>
+		<field name="name">Add student to classroom</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">tp.master.add_student</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="add_student_classroom_view_form" />
+		<field name="target">new</field>
+	</record>
+
+</odoo>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+  <data>
+
+
+    <!-- La vue Tree Etudiant -->
+    <record id="tp_master_student_tree" model="ir.ui.view">
+      <field name="name">tp_master_student_tree</field>
+      <field name="model">tp.master.student</field>
+      <field name="arch" type="xml">
+        <tree string="Etudiant">
+          <field name="name"/>
+          <field name="firstname" />
+          <field name="lastname" />
+          <field name="gender" />
+          <field name="faculty_id" />
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- La vue Formulaire Etudiant    -->
+    <record id="tp_master_student_form" model="ir.ui.view">
+      <field name="name">tp_master_student_form</field>
+      <field name="model">tp.master.student</field>
+      <field name="arch" type="xml">
+        <form string="Etudiant" version="7.0">
+          <header>
+            <button id="button_registered" name="action_registered" string="Préinscrit" class="btn-primary" states="new" confirm="Etes-vous sûr de vouloir inscrire cet étudiant ?" type="object" groups="tp_master.tp_master_schooling,base.group_system" />
+            <button id="button_valid" name="action_valid" string="Validé" class="btn-primary" states="registered" type="object" groups="tp_master.tp_master_direction_formation,base.group_system" />
+            <button id="button_inscribe" name="%(tp_master.add_student_classroom_wizard)d" string="Inscire dans une classe" class="btn-primary" states="valid" type="action" groups="tp_master.tp_master_direction_formation,base.group_system" />
+            <button id="button_rejected" name="action_rejected" string="Rejeté" class="btn-primary" states="registered" type="object" groups="tp_master.tp_master_direction_formation,base.group_system" />
+            <button id="button_new" name="action_new" string="Remettre Statut Nouveau" class="btn-primary" states="rejected" type="object" groups="tp_master.tp_master_schooling,base.group_system" />
+            <field name="state" widget="statusbar" statusbar_visible="new,registered,valid" />
+          </header>
+          <sheet>
+            <field name="image" widget="image" class="oe_avatar" />
+            <div class="oe_title">
+              <h1>
+                <field name="file_number" readonly="1" />
+              </h1>
+            </div>
+            <group>
+              <group>
+                <field name="name" />
+                <field name="firstname" />
+                <field name="lastname" />
+                <field name="birthday" />
+                <field name="place_birth" />
+              </group>
+              <group>
+                <field name="gender" />
+                <field name="email" />
+                <field name="phone" />
+                <field name="program_id" />
+                <field name="faculty_id" />
+              </group>
+            </group>
+            <notebook>
+              <page string="Etat Civil">
+                <group>
+                  <group>
+                    <field name="birth_act" widget="binary" />
+                    <field name="id_card" />
+                  </group>
+                  <group>
+                    <field name="passport" />
+                    <field name="nationality_certificate" />
+                  </group>
+                </group>
+              </page>
+              <page string="Bulletins de Notes">
+                <field name="gradebook_ids" widget="many2many_binary" />
+              </page>
+              <page string="Diplômes et Attestations">
+                <field name="diploma_certificate_ids" widget="many2many_binary" />
+              </page>
+              <page string="Motif du rejet">
+                <field name="reason_rejection" />
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- L'action du menu Patient -->
+
+    <record model="ir.actions.act_window" id="action_tp_master_student">
+      <field name="name">Etudiant</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">tp.master.student</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+  </data>
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="0">
+            <record id="tp_master_module_category" model="ir.module.category">
+                    <field name="name">TP Master 2</field>
+                    <field name="sequence">9</field>
+            </record>
+
+            <record id="tp_master_schooling" model="res.groups">
+                <field name="name">Service Scolarité</field>
+                <field name="users" eval="[(4, ref('base.user_root'))]"/>
+                <field name="category_id" ref="tp_master_module_category"/>
+            </record>
+
+            <record id="tp_master_direction_formation" model="res.groups">
+                <field name="name">Direction de la formation</field>
+                <field name="users" eval="[(4, ref('base.user_root'))]"/>
+                <field name="category_id" ref="tp_master_module_category"/>
+            </record>
+
+
+</odoo>

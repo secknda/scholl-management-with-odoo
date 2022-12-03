@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+    <!-- Menu principal -->   
+        <menuitem name="TP Master" id="tp_master_menu"
+            sequence="1" 
+            />
+
+
+        <!-- Sous Menu Configuration  -->
+        <menuitem name="Configuration" id="tp_master_configuration" parent="tp_master_menu"
+            sequence="1"
+            />
+         <!-- Menu Etudiant  -->
+         <menuitem name="Etudiant" id="tp_master_student" parent="tp_master_configuration"
+            sequence="1" action="action_tp_master_student"
+            />
+         <!-- Menu Filière  -->
+         <menuitem name="Filière" id="tp_master_faculty" parent="tp_master_configuration"
+            sequence="2" action="action_tp_master_faculty"
+            />
+          <!-- Menu Programme  -->
+         <menuitem name="Programme" id="tp_master_program" parent="tp_master_configuration"
+            sequence="3" action="action_tp_master_program"
+            />
+
+        <!-- Sous Menu Parametrage  -->
+        <menuitem name="Parametrage" id="tp_master_parametrage" parent="tp_master_menu"
+            sequence="2"
+            />
+        <menuitem name="Professeur" id="tp_master_teacher" parent="tp_master_parametrage"
+            sequence="1" action="action_tp_master_teacher"
+            />
+        <menuitem name="Grade" id="tp_master_grade" parent="tp_master_parametrage"
+            sequence="2" action="action_tp_master_grade"
+            />
+        <menuitem name="Spécialités" id="tp_master_speciality" parent="tp_master_parametrage"
+            sequence="3" action="action_tp_master_speciality"
+            />
+
+        <!-- Sous Menu Liste des Salles  -->
+        <menuitem name="Liste des Classes" id="tp_master_salle" parent="tp_master_menu"
+            sequence="3"
+            />
+        <menuitem name="Salles" id="tp_master_classroom" parent="tp_master_salle"
+            sequence="1" action="action_tp_master_classroom"
+            />
+
+    </data>
+</odoo>

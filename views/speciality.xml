@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+  
+       
+    
+    
+    <!-- La vue Tree Spécialité -->
+        <record id="tp_master_speciality_tree" model="ir.ui.view">
+            <field name="name">tp_master_speciality_tree</field>
+            <field name="model">tp.master.speciality</field>
+            <field name="arch" type="xml">
+                <tree string="Spécialités">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+
+       <!-- La vue Formulaire Spécialité -->
+       <record id="tp_master_speciality_form" model="ir.ui.view">
+            <field name="name">tp_master_speciality_form</field>
+            <field name="model">tp.master.speciality</field>
+            <field name="arch" type="xml">
+              <form string="Spécialités" version="7.0"> 
+                    <group>  
+                        <field name="name"/>
+                        <field name="code"/>
+                    </group> 
+                 <notebook>
+                  <page string="Liste des Profs">
+                    <field name="teacher_ids"/>
+                  </page>
+                  <page string="Liste des Filières">
+                    <field name="faculty_ids"/>
+                  </page>
+                </notebook>
+
+              </form>
+            </field>
+        </record>
+
+
+        <!-- L'action du menu Spécialité -->
+        <record model="ir.actions.act_window" id="action_tp_master_speciality">
+          <field name="name">Spécialités</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">tp.master.speciality</field>
+          <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+
+        
+
+
+       
+    
+    
+
+
+    </data>
+</odoo>

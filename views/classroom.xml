@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+  
+       
+    
+    
+    <!-- La vue Tree Salle -->
+        <record id="tp_master_classroom_tree" model="ir.ui.view">
+            <field name="name">tp_master_classroom_tree</field>
+            <field name="model">tp.master.classroom</field>
+            <field name="arch" type="xml">
+                <tree string="Salle">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="faculty_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+       <!-- La vue Formulaire Salle -->
+       <record id="tp_master_classroom_form" model="ir.ui.view">
+            <field name="name">tp_master_classroom_form</field>
+            <field name="model">tp.master.classroom</field>
+            <field name="arch" type="xml">
+              <form string="Salles" version="7.0"> 
+                 <group>  
+                    <group>  
+                        <field name="name"/>
+                        <field name="code"/>
+                    </group> 
+                    <group> 
+                        <field name="nbre_student"/> 
+                        <field name="faculty_id"/>
+                    </group> 
+                 </group> 
+
+                 <notebook>
+                  <page string="Liste des étudiants par Salle">
+                    <field name="student_ids"/>
+                  </page>
+                </notebook>
+
+              </form>
+            </field>
+        </record>
+
+
+        <!-- L'action du menu Salle -->
+        <record model="ir.actions.act_window" id="action_tp_master_classroom">
+          <field name="name">Salle</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">tp.master.classroom</field>
+          <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+
+        
+
+
+       
+    
+    
+
+
+    </data>
+</odoo>
